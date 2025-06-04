@@ -1,0 +1,12 @@
+# Terrraform state
+*.state
+*.tfstate.backup
+.terraform/
+
+# Sensitive config
+terraform.tfvars
+*.pem
+
+# Editor/OS files
+*.swp
+*.DS_Stroe

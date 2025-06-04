@@ -147,7 +147,7 @@ resource "aws_security_group" "mysql_sg" {
 
 resource "aws_instance" "wordpress" {
   ami                    = "ami-0f58b397bc5c1f2e8"
-  instance_type          = "t3.micro"
+  instance_type          = "t3.small"
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.web_sg.id]
   key_name               = var.key_name

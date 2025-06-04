@@ -151,7 +151,12 @@ resource "aws_instance" "wordpress" {
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.web_sg.id]
   key_name               = var.key_name
-  user_data              = file("user_data_wordpress.sh")
+  user_data = templatefile("${path.module}/user_data_wordpress.sh", {
+    mysql_private_ip = aws_instance.mysql.private_ip,
+    mysql_user       = var.mysql_user,
+    mysql_password   = var.mysql_password,
+    mysql_db         = var.mysql_db
+  })
 
   tags = {
     Name = "Wordpress-Instance"

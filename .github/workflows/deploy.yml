@@ -30,8 +30,11 @@ jobs:
         run: |
           terraform plan \
             -input=false \
-            -var="key_name=${{ secrets.EC2_KEY_NAME }}" \
+            -var="key_name=${{ secrets.KEY_NAME }}" \
+            -var="mysql_user=${{ secrets.MYSQL_USER}}" \
             -var="mysql_password=${{ secrets.MYSQL_PASSWORD }}" \
+            -var="mysql_db=${{ secrets.MYSQL_DB}}" \
+
             -out=tfplan
 
       - name: Terraform Apply
